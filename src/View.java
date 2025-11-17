@@ -113,7 +113,14 @@ public class View extends JFrame {
  * true zurückgeben wenn "ok" gedrückt wurde, und false , wenn "cancel"
  * gedrückt wurde
  */
+public void showInfoMessage(String title, String text){
+    JOptionPane.showMessageDialog(this, text, title, JOptionPane.INFORMATION_MESSAGE);
+}
 
+    public boolean showConfirmMessage(String title, String text){
+        int result = JOptionPane.showConfirmDialog(this, text, title, JOptionPane.OK_CANCEL_OPTION);
+        return result == JOptionPane.OK_OPTION;
+    }
 
 
 }

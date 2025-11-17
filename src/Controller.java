@@ -1,7 +1,9 @@
 import java.awt.event.ActionEvent;
 
 public class Controller {
-
+//Konstanten
+    private int MIN_NAME_LENGTH = 2;
+//Felder
     private View mainView;
     private BirthdayDAO dao;
     //ToDo:test
@@ -23,15 +25,16 @@ public class Controller {
         String name = mainView.getNameText();
         String date = mainView.getDateText();
 
+
         //2.Daten validieren(Daten auf Zuverlässigkeit prüfen)
-        if(name.trim().length()< 2){
-                mainView.showErrorDialog("Feheler","Der Namen muss mindestens 3 Buchstaben enthalten");
+        if(name.trim().length()< MIN_NAME_LENGTH){
+                mainView.showErrorDialog("Fehler","Der Namen muss mindestens 3 Buchstaben enthalten");
 
             return;
         }
 
 
-        if(date.trim().length()< 2){
+        if(date.trim().length()< MIN_NAME_LENGTH){
             mainView.showErrorDialog("Fehler","sei kein spast");
             return;
         }
@@ -39,15 +42,18 @@ public class Controller {
         //3.vom DAO die addBirthday-Methoden nutzen
         dao.addBirthday(name,date);
 
+        mainView.showInfoMessage("Info", "Eintrag gespeichert");
+
     }
     private void onClickDelete (ActionEvent  event){
         System.out.print(event.getActionCommand());
+        if(mainView.showConfirmMessage("Bestätigen","Möchten sie diese Datei löschen?"));
     }
     private void onClickLoad (ActionEvent  event){
-        System.out.print(event.getActionCommand());
-    }
+        System.out.print(event.getActionCommand());}
     private void onClickDeleteAll (ActionEvent  event){
         System.out.print(event.getActionCommand());
+        if(mainView.showConfirmMessage("Bestätigen ","Wirklich alles löschen?"));
     }
 
 }

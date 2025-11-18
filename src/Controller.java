@@ -47,13 +47,23 @@ public class Controller {
     }
     private void onClickDelete (ActionEvent  event){
         System.out.print(event.getActionCommand());
-        if(mainView.showConfirmMessage("Bestätigen","Möchten sie diese Datei löschen?"));
+        if(mainView.showConfirmMessage("Bestätigen","Möchten sie diese Datei löschen?")){//
+
+        }
     }
     private void onClickLoad (ActionEvent  event){
         System.out.print(event.getActionCommand());}
     private void onClickDeleteAll (ActionEvent  event){
         System.out.print(event.getActionCommand());
         if(mainView.showConfirmMessage("Bestätigen ","Wirklich alles löschen?"));
+        //    TODO löschmethode des DAO verwenden
+        boolean succses = dao.deleteAll();
+        // todo erfolgsmeldung prüfen und entsprechende meldungen zurückgeben
+        if (succses) {
+            mainView.showInfoMessage("Info", "Alle Einträge wurden gelöscht.");
+        } else {
+            mainView.showErrorDialog("Fehler", "Einträge konnten nicht gelöscht werden.");
+        }
     }
 
 }

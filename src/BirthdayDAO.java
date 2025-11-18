@@ -15,6 +15,13 @@ public class BirthdayDAO {
         birthdayList.add(new Birthday(name,date));
         System.out.println("Birthdaylist Size: " + birthdayList.size());
     }
+    public boolean deleteAll(){
+
+        if(birthdayList != null) {
+            birthdayList.clear();
+        }
+        return true;
+    }
 
     public void save(){
 

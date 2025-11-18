@@ -1,0 +1,208 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Controller",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1134020253 { 
+   	label=Birthday
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Birthday1134020253[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Birthday</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   date: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Birthday(name: String, date: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDate(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getName(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDate(date: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setName(name: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1664073796 { 
+   	label=Controller
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Controller1664073796[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Controller</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   MIN_NAME_LENGTH: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dao: BirthdayDAO [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mainView: View [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Controller()</TD></TR>
+<TR><TD ALIGN="LEFT" >- onClickDelete(event: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >- onClickDeleteAll(event: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >- onClickLoad(event: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >- onClickSave(event: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2666181 { 
+   	label=View
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   View2666181[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)View</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   birthdayTf: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   delallBtn: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   delthisBtn: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   loadBtn: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nameTf: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   saveBtn: JButton [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ View(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addDeleteAllHandler(listener: ActionListener)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addDeleteHandler(listener: ActionListener)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addLoadHandler(listener: ActionListener)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addSaveHandler(listener: ActionListener)</TD></TR>
+<TR><TD ALIGN="LEFT" >- createUI()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDateText(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNameText(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showConfirmMessage(title: String, text: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showErrorDialog(title: String, text: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showInfoMessage(title: String, text: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_615325771 { 
+   	label=BirthdayDAO
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   BirthdayDAO615325771[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BirthdayDAO</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   birthdayList: ArrayList&lt;Birthday&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ BirthdayDAO()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addBirthday(name: String, date: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ load()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ save()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+BirthdayDAO615325771 -> Birthday1134020253[label="birthdayList
+[0..*]"];
+Controller1664073796 -> BirthdayDAO615325771[label="dao
+[0..1]"];
+Controller1664073796 -> View2666181[label="mainView
+[0..1]"];
+    
+}
+@enduml

@@ -13,7 +13,7 @@ public class Controller {
         this.mainView.addSaveHandler(this::onClickSave);
         this.mainView.addDeleteHandler(this::onClickDelete);
         this.mainView.addLoadHandler(this::onClickLoad);
-        this.mainView.addDeleteAllHandler(this::onClickDeleteAll);
+        this.mainView.addDeleteAllHandler(this::0onClickDeleteAll);
         this.dao= new BirthdayDAO();
     }
 
@@ -47,12 +47,14 @@ public class Controller {
     }
     private void onClickDelete (ActionEvent  event){
         System.out.print(event.getActionCommand());
-        if(mainView.showConfirmMessage("Bestätigen","Möchten sie diese Datei löschen?")){//
+        if(mainView.showConfirmMessage("Bestätigen","Möchten sie diese Datei löschen?")){
 
         }
     }
-    private void onClickLoad (ActionEvent  event){
+    private void onClickLoad(ActionEvent  event){
         System.out.print(event.getActionCommand());}
+
+
     private void onClickDeleteAll (ActionEvent  event){
         System.out.print(event.getActionCommand());
         if(mainView.showConfirmMessage("Bestätigen ","Wirklich alles löschen?"));

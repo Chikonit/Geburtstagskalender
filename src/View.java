@@ -122,7 +122,6 @@ public void showInfoMessage(String title, String text){
         return result == JOptionPane.OK_OPTION;
     }
 
-
 }
 
 
